@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myers Community</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Days&display=swap" rel="stylesheet">
+
+<!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<!-- Font Awesome untuk ikon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  background: url('https://files.catbox.moe/gs5pzk.jpg') center/cover no-repeat fixed;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.85) 100%);
+  z-index: -2;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px 5%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-m {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255,255,255,0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Days', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.3s;
+}
+
+.logo-m:hover {
+  transform: scale(1.1);
+}
+
+.logo span {
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+/* Halaman Utama */
+#home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 15px;
+}
+
+.creator img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.title {
+  font-family: 'Days', sans-serif;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+}
+
+.desc {
+  font-size: 0.95rem;
+  max-width: 500px;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  font-family: 'Days', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-3px);
+}
+
+.arrow {
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  transform: rotate(-45deg);
+}
+
+.left-arrow {
+  transform: rotate(135deg);
+}
+
+/* Tombol Join Formal - Style Glass Elegan */
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 36px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  font-family: 'Days', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  transition: all 0.4s ease;
+  margin-top: 25px;
+}
+
+.join-btn i {
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+
+.join-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* Halaman Tentang Kami */
+#about-page {
+  min-height: 100vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 90px 20px 60px;
+  text-align: center;
+}
+
+.about-page.active {
+  display: flex;
+}
+
+.about-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subtitle {
+  font-size: 1rem; /* Dikecilkan */
+  opacity: 0.85;
+  margin-top: 10px;
+  letter-spacing: 0.8px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Style seragam untuk Group, Owner, dan All Member */
+.photo-container {
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  margin: 0 auto 50px;
+}
+
+.photo-container .photo {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  transition: transform 0.5s ease;
+}
+
+.photo-container:hover .photo {
+  transform: scale(1.03);
+}
+
+.photo-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  backdrop-filter: blur(8px);
+}
+
+/* Section Title */
+.section-title {
+  font-family: 'Days', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+}
+
+/* Rules */
+.rules-container {
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.rules-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.rules-list {
+  list-style: none;
+  font-size: 1.05rem;
+  line-height: 2;
+  text-align: left;
+}
+
+.rules-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+}
+
+.rules-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+/* All Members Grid */
+.members-section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto 60px;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+/* Admin Team Carousel */
+.admin-section {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.admin-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 25px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.admin-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-item {
+  flex: 0 0 auto;
+  width: 180px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease;
+}
+
+.admin-item:hover {
+  transform: translateY(-10px);
+}
+
+.admin-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+
+.admin-name {
+  font-family: 'Days', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.admin-role {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Social & Join Section */
+.social-section, .join-section {
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.social-link {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+}
+
+.social-icon {
+  font-size: 2.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.back-btn-container {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.back-btn {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.back-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HALAMAN UTAMA -->
+<div id="home-page">
+  <div class="header">
+    <div class="logo" data-aos="fade-down" data-aos-delay="100">
+      <div class="logo-m">M</div>
+      <span>Myers Community</span>
+    </div>
+  </div>
+
+  <div class="creator" data-aos="fade-up" data-aos-delay="200">
+    <img src="https://files.catbox.moe/puc9wk.jpg" alt="creator">
+    <span>Di buat oleh popo.ID</span>
+  </div>
+
+  <h1 class="title" data-aos="fade-up" data-aos-delay="400">
+    website resmi<br>official marga myers
+  </h1>
+
+  <p class="desc" data-aos="fade-up" data-aos-delay="600">
+    Klik tombol di bawah untuk mengikuti seleksi<br>
+    dan resmi menjadi bagian anggota marga myers, silahkan scrol ke bawah sampai menemukan join grup seleksi.
+  </p>
+
+  <div class="btn" onclick="showAbout()" data-aos="fade-up" data-aos-delay="800">
+    Mulai sekarang
+    <div class="arrow"></div>
+  </div>
+</div>
+
+<!-- HALAMAN TENTANG KAMI -->
+<div id="about-page" class="about-page">
+  <div class="header">
+    <div class="logo">
+      <div class="logo-m">M</div>
+      <span>Myers Community</span>
+    </div>
+  </div>
+
+  <section class="about-hero" data-aos="fade-up" data-aos-duration="800">
+    <h1 class="title">About Group</h1>
+    <p class="subtitle">
+      our community was created for communication and good friends, not for looking for trouble, arrogance, etc. Join and be a part of us.
+    </p>
+  </section>
+
+  <!-- Group Photo -->
+  <div class="photo-container" data-aos="zoom-in-up" data-aos-delay="200">
+    <img src="https://files.catbox.moe/hd57jq.jpg" alt="Foto Grup Myers" class="photo">
+    <div class="photo-overlay"><span>Myers Family</span></div>
+  </div>
+
+  <!-- Rules -->
+  <div class="rules-container" data-aos="fade-up" data-aos-delay="400">
+    <h2 class="section-title">Rules In Group</h2>
+    <div class="rules-card glass">
+      <ul class="rules-list">
+        <li data-aos="fade-right" data-aos-delay="100">Tidak menggunakan identitas palsu (faker)</li>
+        <li data-aos="fade-right" data-aos-delay="200">Saling menghargai sesama member</li>
+        <li data-aos="fade-right" data-aos-delay="300">Dilarang skandal atau drama dengan lawan jenis</li>
+        <li data-aos="fade-right" data-aos-delay="400">Pelanggaran akan ditindak tegas oleh admin</li>
+        <li data-aos="fade-right" data-aos-delay="500">Mari jaga sikap & etika untuk grup yang sehat</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Owner -->
+  <div class="owner-section" data-aos="fade-up" data-aos-delay="600">
+    <h2 class="section-title">Founder</h2>
+    <div class="photo-container">
+      <img src="https://files.catbox.moe/zfjqiw.jpg" alt="Owner Myers" class="photo">
+      <div class="photo-overlay"><span>Papi Bakwanz & Mami Windi</span></div>
+    </div>
+  </div>
+
+  <!-- Admin Team -->
+  <div class="admin-section" data-aos="fade-up" data-aos-delay="700">
+    <h2 class="section-title">Admin Team</h2>
+    <div class="admin-carousel">
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/rb0qps.jpg" alt="Ell" class="admin-photo">
+        <div class="admin-name">Ell</div>
+        <div class="admin-role">Leader Boys</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/0fignl.jpg" alt="Key" class="admin-photo">
+        <div class="admin-name">Key</div>
+        <div class="admin-role">Leader Girl</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/kdzjgz.jpg" alt="Popo" class="admin-photo">
+        <div class="admin-name">Popo</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/5mmcgw.jpg" alt="Ara" class="admin-photo">
+        <div class="admin-name">Ara</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/oipyr8.jpg" alt="All" class="admin-photo">
+        <div class="admin-name">All</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/1bwlrw.jpg" alt="Cyla" class="admin-photo">
+        <div class="admin-name">Cyla</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/cuc071.jpg" alt="Bila" class="admin-photo">
+        <div class="admin-name">Bila</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/o159ap.jpg" alt="Fatur" class="admin-photo">
+        <div class="admin-name">Fatur</div>
+        <div class="admin-role">Admin</div>
+      </div>
+      <div class="admin-item">
+        <img src="https://files.catbox.moe/qeetlp.jpg" alt="Ion" class="admin-photo">
+        <div class="admin-name">Ion</div>
+        <div class="admin-role">Admin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Member -->
+  <div class="members-section" data-aos="fade-up" data-aos-delay="800">
+    <h2 class="section-title">All Member</h2>
+    <div class="members-grid">
+      <div class="photo-container">
+        <img src="https://files.catbox.moe/dotbdy.jpg" alt="Member 1" class="photo">
+        <div class="photo-overlay"><span>Member Myers</span></div>
+      </div>
+      <div class="photo-container">
+        <img src="https://files.catbox.moe/sctl5s.jpg" alt="Member 2" class="photo">
+        <div class="photo-overlay"><span>Member Myers</span></div>
+      </div>
+      <div class="photo-container">
+        <img src="https://files.catbox.moe/a1e493.jpg" alt="Member 3" class="photo">
+        <div class="photo-overlay"><span>Member Myers</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saluran Resmi -->
+  <div class="social-section" data-aos="fade-up" data-aos-delay="900">
+    <h2 class="section-title">Sosmed Myers</h2>
+    <div class="social-icons">
+      <a href="https://whatsapp.com/channel/0029Vb1s6kp7IUYW2itDQt2T" target="_blank" class="social-link">
+        <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+        <span class="social-text">WhatsApp Channel</span>
+      </a>
+      <a href="https://discord.gg/BS7EcHM4D" target="_blank" class="social-link">
+        <div class="social-icon"><i class="fab fa-discord"></i></div>
+        <span class="social-text">Discord Server</span>
+      </a>
+      <a href="https://www.tiktok.com/@margamyres?_r=1&_t=ZS-91lzzLteAJ3" target="_blank" class="social-link">
+        <div class="social-icon"><i class="fab fa-tiktok"></i></div>
+        <span class="social-text">TikTok Official</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Cara Join -->
+  <div class="join-section glass" data-aos="fade-up" data-aos-delay="1000">
+    <h2 class="section-title">Cara Join Marga Myers</h2>
+    <p>Ingin bergabung dengan keluarga Myers? Silakan masuk ke grup seleksi terlebih dahulu untuk proses pendaftaran.</p>
+    <a href="https://chat.whatsapp.com/GqheEIDTYOW2fFsDp0T5AN?mode=hqrc" target="_blank" class="join-btn">
+      <i class="fab fa-whatsapp"></i>
+      Join Grup Seleksi
+    </a>
+  </div>
+
+  <!-- Back Button -->
+  <div class="back-btn-container" data-aos="fade-up" data-aos-delay="1100">
+    <button class="btn back-btn" onclick="showHome()">
+      Kembali ke Beranda
+      <div class="arrow left-arrow"></div>
+    </button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 80
+  });
+
+  function showAbout() {
+    document.getElementById('home-page').style.display = 'none';
+    document.getElementById('about-page').style.display = 'flex';
+    document.getElementById('about-page').classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    AOS.refresh();
+  }
+
+  function showHome() {
+    document.getElementById('about-page').style.display = 'none';
+    document.getElementById('home-page').style.display = 'flex';
+    document.getElementById('about-page').classList.remove('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    AOS.refresh();
+  }
+</script>
+
+</body>
+  </html>
